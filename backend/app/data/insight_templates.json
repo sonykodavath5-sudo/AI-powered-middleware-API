@@ -1,0 +1,385 @@
+{
+  "categoryLabels": {
+    "adoption":    { "en": "Adoption",    "es": "Adopción",     "fr": "Adoption",    "de": "Akzeptanz" },
+    "risk":        { "en": "Risk",        "es": "Riesgo",       "fr": "Risque",      "de": "Risiko" },
+    "performance": { "en": "Performance", "es": "Rendimiento",  "fr": "Performance", "de": "Performance" },
+    "sentiment":   { "en": "Sentiment",   "es": "Sentimiento",  "fr": "Sentiment",   "de": "Stimmung" },
+    "cost":        { "en": "Cost",        "es": "Coste",        "fr": "Coût",        "de": "Kosten" },
+    "compliance":  { "en": "Compliance",  "es": "Cumplimiento", "fr": "Conformité",  "de": "Compliance" },
+    "engagement":  { "en": "Engagement",  "es": "Interacción",  "fr": "Engagement",  "de": "Interaktion" },
+    "forecast":    { "en": "Forecast",    "es": "Previsión",    "fr": "Prévision",   "de": "Prognose" },
+    "quality":     { "en": "Quality",     "es": "Calidad",      "fr": "Qualité",     "de": "Qualität" },
+    "retention":   { "en": "Retention",   "es": "Retención",    "fr": "Rétention",   "de": "Bindung" },
+    "competition": { "en": "Competition", "es": "Competencia",  "fr": "Concurrence", "de": "Wettbewerb" },
+    "operations":  { "en": "Operations",  "es": "Operaciones",  "fr": "Opérations",  "de": "Betrieb" },
+    "opportunity": { "en": "Opportunity", "es": "Oportunidad",  "fr": "Opportunité", "de": "Chance" },
+    "anomaly":     { "en": "Anomaly",     "es": "Anomalía",     "fr": "Anomalie",    "de": "Anomalie" }
+  },
+
+  "templates": [
+    {
+      "key": "adoption-trend",
+      "category": "adoption",
+      "tags": ["growth", "usage", "weekly-active"],
+      "source": "usage-analytics",
+      "valueRange": [8, 64],
+      "windowValues": [7, 14, 30, 90],
+      "translations": {
+        "en": {
+          "title": "Adoption trend for {topic}",
+          "content": "Weekly active usage of {topic} climbed {value}% over the last {window} days, and most of that came from users who had already tried it at least once."
+        },
+        "es": {
+          "title": "Tendencia de adopción de {topic}",
+          "content": "El uso activo semanal de {topic} creció un {value}% en los últimos {window} días, y la mayor parte proviene de usuarios que ya lo habían probado al menos una vez."
+        },
+        "fr": {
+          "title": "Tendance d'adoption pour {topic}",
+          "content": "L'usage actif hebdomadaire de {topic} a progressé de {value}% sur les {window} derniers jours, principalement grâce aux utilisateurs l'ayant déjà essayé au moins une fois."
+        },
+        "de": {
+          "title": "Adoptionstrend für {topic}",
+          "content": "Die wöchentliche aktive Nutzung von {topic} stieg in den letzten {window} Tagen um {value}%, überwiegend durch Nutzer, die es bereits mindestens einmal ausprobiert hatten."
+        }
+      }
+    },
+    {
+      "key": "churn-risk",
+      "category": "risk",
+      "tags": ["churn", "accounts", "retention"],
+      "source": "lifecycle-model",
+      "valueRange": [9, 38],
+      "windowValues": [30, 60, 90],
+      "translations": {
+        "en": {
+          "title": "Churn risk concentrated in {topic}",
+          "content": "Accounts that engage with {topic} fewer than three times a month churn at {value}%, which is roughly double the baseline for everyone else."
+        },
+        "es": {
+          "title": "Riesgo de abandono concentrado en {topic}",
+          "content": "Las cuentas que interactúan con {topic} menos de tres veces al mes se dan de baja en un {value}%, casi el doble de la media del resto."
+        },
+        "fr": {
+          "title": "Risque d'attrition concentré sur {topic}",
+          "content": "Les comptes qui utilisent {topic} moins de trois fois par mois résilient à {value}%, soit près du double de la référence pour les autres."
+        },
+        "de": {
+          "title": "Abwanderungsrisiko konzentriert sich auf {topic}",
+          "content": "Konten, die {topic} weniger als dreimal im Monat nutzen, kündigen zu {value}% — fast doppelt so häufig wie alle übrigen."
+        }
+      }
+    },
+    {
+      "key": "latency-hotspot",
+      "category": "performance",
+      "tags": ["latency", "p95", "throughput"],
+      "source": "apm-traces",
+      "valueRange": [180, 2400],
+      "windowValues": [50, 120, 250, 400],
+      "translations": {
+        "en": {
+          "title": "Latency hotspot in {topic}",
+          "content": "The 95th percentile response time for {topic} sits at {value} ms, and it degrades sharply once concurrency passes {window} requests."
+        },
+        "es": {
+          "title": "Punto crítico de latencia en {topic}",
+          "content": "El percentil 95 del tiempo de respuesta de {topic} está en {value} ms y se degrada bruscamente al superar las {window} solicitudes simultáneas."
+        },
+        "fr": {
+          "title": "Point chaud de latence sur {topic}",
+          "content": "Le 95e centile du temps de réponse de {topic} atteint {value} ms et se dégrade fortement au-delà de {window} requêtes simultanées."
+        },
+        "de": {
+          "title": "Latenz-Hotspot bei {topic}",
+          "content": "Die 95. Perzentile der Antwortzeit von {topic} liegt bei {value} ms und verschlechtert sich deutlich ab {window} gleichzeitigen Anfragen."
+        }
+      }
+    },
+    {
+      "key": "sentiment-shift",
+      "category": "sentiment",
+      "tags": ["feedback", "reviews", "voice-of-customer"],
+      "source": "feedback-mining",
+      "valueRange": [52, 94],
+      "windowValues": [240, 800, 1500, 3200],
+      "translations": {
+        "en": {
+          "title": "Sentiment shift around {topic}",
+          "content": "Mentions of {topic} turned net positive this quarter: {value}% favourable across {window} reviewed conversations."
+        },
+        "es": {
+          "title": "Cambio de sentimiento sobre {topic}",
+          "content": "Las menciones de {topic} pasaron a ser netamente positivas este trimestre: un {value}% favorable en {window} conversaciones revisadas."
+        },
+        "fr": {
+          "title": "Évolution du sentiment autour de {topic}",
+          "content": "Les mentions de {topic} sont devenues nettement positives ce trimestre : {value}% d'avis favorables sur {window} conversations analysées."
+        },
+        "de": {
+          "title": "Stimmungswandel rund um {topic}",
+          "content": "Erwähnungen von {topic} wurden in diesem Quartal netto positiv: {value}% zustimmend über {window} ausgewertete Gespräche."
+        }
+      }
+    },
+    {
+      "key": "cost-driver",
+      "category": "cost",
+      "tags": ["spend", "infrastructure", "efficiency"],
+      "source": "billing-export",
+      "valueRange": [6, 41],
+      "windowValues": [7, 30, 90],
+      "translations": {
+        "en": {
+          "title": "Cost driver: {topic}",
+          "content": "{topic} accounts for {value}% of the monthly infrastructure bill, and most of it comes from workloads that run outside business hours."
+        },
+        "es": {
+          "title": "Factor de coste: {topic}",
+          "content": "{topic} representa el {value}% de la factura mensual de infraestructura, en su mayoría por cargas que se ejecutan fuera del horario laboral."
+        },
+        "fr": {
+          "title": "Facteur de coût : {topic}",
+          "content": "{topic} représente {value}% de la facture d'infrastructure mensuelle, essentiellement des traitements exécutés hors heures ouvrées."
+        },
+        "de": {
+          "title": "Kostentreiber: {topic}",
+          "content": "{topic} macht {value}% der monatlichen Infrastrukturkosten aus, größtenteils durch Workloads außerhalb der Geschäftszeiten."
+        }
+      }
+    },
+    {
+      "key": "compliance-gap",
+      "category": "compliance",
+      "tags": ["audit", "retention-policy", "governance"],
+      "source": "policy-scanner",
+      "valueRange": [3, 27],
+      "windowValues": [30, 180, 365],
+      "translations": {
+        "en": {
+          "title": "Compliance gap in {topic}",
+          "content": "{value}% of records touching {topic} are missing a retention label, which would fail an audit under the policy in force today."
+        },
+        "es": {
+          "title": "Brecha de cumplimiento en {topic}",
+          "content": "El {value}% de los registros relacionados con {topic} no tiene etiqueta de retención, lo que no superaría una auditoría con la política vigente."
+        },
+        "fr": {
+          "title": "Écart de conformité sur {topic}",
+          "content": "{value}% des enregistrements liés à {topic} n'ont pas d'étiquette de rétention, ce qui échouerait à un audit selon la politique en vigueur."
+        },
+        "de": {
+          "title": "Compliance-Lücke bei {topic}",
+          "content": "{value}% der Datensätze zu {topic} haben kein Aufbewahrungskennzeichen und würden eine Prüfung nach der geltenden Richtlinie nicht bestehen."
+        }
+      }
+    },
+    {
+      "key": "engagement-window",
+      "category": "engagement",
+      "tags": ["messaging", "timing", "reply-rate"],
+      "source": "campaign-analytics",
+      "valueRange": [12, 88],
+      "windowValues": [4, 12, 24, 48],
+      "translations": {
+        "en": {
+          "title": "Best engagement window for {topic}",
+          "content": "Messages about {topic} get {value}% more replies when they land within {window} hours of a user's last session."
+        },
+        "es": {
+          "title": "Mejor ventana de interacción para {topic}",
+          "content": "Los mensajes sobre {topic} reciben un {value}% más de respuestas si llegan dentro de las {window} horas posteriores a la última sesión del usuario."
+        },
+        "fr": {
+          "title": "Meilleure fenêtre d'engagement pour {topic}",
+          "content": "Les messages portant sur {topic} obtiennent {value}% de réponses en plus lorsqu'ils arrivent dans les {window} heures suivant la dernière session."
+        },
+        "de": {
+          "title": "Bestes Zeitfenster für {topic}",
+          "content": "Nachrichten zu {topic} erhalten {value}% mehr Antworten, wenn sie innerhalb von {window} Stunden nach der letzten Sitzung eintreffen."
+        }
+      }
+    },
+    {
+      "key": "demand-forecast",
+      "category": "forecast",
+      "tags": ["projection", "volume", "capacity"],
+      "source": "forecast-model",
+      "valueRange": [4, 57],
+      "windowValues": [14, 30, 60, 90],
+      "translations": {
+        "en": {
+          "title": "Demand forecast for {topic}",
+          "content": "The model projects {value}% growth in {topic} volume over the next {window} days, with the widest uncertainty band in the final week."
+        },
+        "es": {
+          "title": "Previsión de demanda para {topic}",
+          "content": "El modelo proyecta un crecimiento del {value}% en el volumen de {topic} durante los próximos {window} días, con mayor incertidumbre en la última semana."
+        },
+        "fr": {
+          "title": "Prévision de demande pour {topic}",
+          "content": "Le modèle projette une croissance de {value}% du volume de {topic} sur les {window} prochains jours, avec l'incertitude la plus forte sur la dernière semaine."
+        },
+        "de": {
+          "title": "Nachfrageprognose für {topic}",
+          "content": "Das Modell prognostiziert {value}% Wachstum beim Volumen von {topic} in den nächsten {window} Tagen, mit der größten Unsicherheit in der letzten Woche."
+        }
+      }
+    },
+    {
+      "key": "quality-regression",
+      "category": "quality",
+      "tags": ["errors", "release", "regression"],
+      "source": "error-tracking",
+      "valueRange": [1, 19],
+      "windowValues": [7, 14, 30],
+      "translations": {
+        "en": {
+          "title": "Quality regression touching {topic}",
+          "content": "Error rates for {topic} rose to {value}% after the last release, and the increase is isolated to a single client version."
+        },
+        "es": {
+          "title": "Regresión de calidad en {topic}",
+          "content": "La tasa de errores de {topic} subió al {value}% tras la última versión, y el aumento se limita a una única versión del cliente."
+        },
+        "fr": {
+          "title": "Régression de qualité sur {topic}",
+          "content": "Le taux d'erreur de {topic} est monté à {value}% après la dernière version, et la hausse se limite à une seule version cliente."
+        },
+        "de": {
+          "title": "Qualitätsregression bei {topic}",
+          "content": "Die Fehlerrate von {topic} stieg nach dem letzten Release auf {value}%, wobei sich der Anstieg auf eine einzige Client-Version beschränkt."
+        }
+      }
+    },
+    {
+      "key": "retention-cohort",
+      "category": "retention",
+      "tags": ["cohort", "onboarding", "activation"],
+      "source": "cohort-analysis",
+      "valueRange": [31, 86],
+      "windowValues": [30, 60, 90, 180],
+      "translations": {
+        "en": {
+          "title": "Retention cohort insight for {topic}",
+          "content": "Users who reach {topic} during their first session retain at {value}% after {window} days, well ahead of every other cohort."
+        },
+        "es": {
+          "title": "Cohorte de retención para {topic}",
+          "content": "Los usuarios que llegan a {topic} en su primera sesión retienen un {value}% tras {window} días, muy por encima del resto de cohortes."
+        },
+        "fr": {
+          "title": "Cohorte de rétention pour {topic}",
+          "content": "Les utilisateurs qui atteignent {topic} dès leur première session sont retenus à {value}% après {window} jours, loin devant les autres cohortes."
+        },
+        "de": {
+          "title": "Retentions-Kohorte für {topic}",
+          "content": "Nutzer, die {topic} in der ersten Sitzung erreichen, bleiben nach {window} Tagen zu {value}% aktiv — deutlich mehr als jede andere Kohorte."
+        }
+      }
+    },
+    {
+      "key": "competitive-signal",
+      "category": "competition",
+      "tags": ["market", "win-loss", "positioning"],
+      "source": "win-loss-review",
+      "valueRange": [5, 44],
+      "windowValues": [30, 90, 180],
+      "translations": {
+        "en": {
+          "title": "Competitive signal on {topic}",
+          "content": "Two of the three closest competitors shipped something comparable to {topic} this quarter, and {value}% of lost deals now mention it by name."
+        },
+        "es": {
+          "title": "Señal competitiva sobre {topic}",
+          "content": "Dos de los tres competidores más cercanos lanzaron algo comparable a {topic} este trimestre, y el {value}% de las oportunidades perdidas ya lo mencionan por su nombre."
+        },
+        "fr": {
+          "title": "Signal concurrentiel sur {topic}",
+          "content": "Deux des trois concurrents les plus proches ont livré un équivalent de {topic} ce trimestre, et {value}% des affaires perdues le citent désormais nommément."
+        },
+        "de": {
+          "title": "Wettbewerbssignal zu {topic}",
+          "content": "Zwei der drei nächsten Wettbewerber haben in diesem Quartal etwas Vergleichbares zu {topic} veröffentlicht, und {value}% der verlorenen Deals nennen es inzwischen namentlich."
+        }
+      }
+    },
+    {
+      "key": "process-bottleneck",
+      "category": "operations",
+      "tags": ["workflow", "manual-review", "cycle-time"],
+      "source": "workflow-telemetry",
+      "valueRange": [11, 240],
+      "windowValues": [24, 48, 72],
+      "translations": {
+        "en": {
+          "title": "Process bottleneck before {topic}",
+          "content": "Requests wait a median of {value} minutes in manual review before they reach {topic}, and that is where most of the end-to-end delay comes from."
+        },
+        "es": {
+          "title": "Cuello de botella antes de {topic}",
+          "content": "Las solicitudes esperan una mediana de {value} minutos en revisión manual antes de llegar a {topic}, y ahí se concentra la mayor parte del retraso total."
+        },
+        "fr": {
+          "title": "Goulet d'étranglement avant {topic}",
+          "content": "Les demandes attendent en médiane {value} minutes en revue manuelle avant d'atteindre {topic}, et c'est de là que vient l'essentiel du délai de bout en bout."
+        },
+        "de": {
+          "title": "Prozessengpass vor {topic}",
+          "content": "Anfragen warten im Median {value} Minuten in der manuellen Prüfung, bevor sie {topic} erreichen — daher stammt der Großteil der Gesamtverzögerung."
+        }
+      }
+    },
+    {
+      "key": "upsell-opportunity",
+      "category": "opportunity",
+      "tags": ["expansion", "limits", "pricing"],
+      "source": "entitlement-usage",
+      "valueRange": [7, 36],
+      "windowValues": [30, 60, 90],
+      "translations": {
+        "en": {
+          "title": "Upsell opportunity around {topic}",
+          "content": "About {value}% of accounts hit their {topic} limit at least once a month, yet none of them has ever been shown an upgrade prompt."
+        },
+        "es": {
+          "title": "Oportunidad de venta adicional en {topic}",
+          "content": "Cerca del {value}% de las cuentas alcanzan su límite de {topic} al menos una vez al mes y, aun así, nunca han visto un aviso de mejora de plan."
+        },
+        "fr": {
+          "title": "Opportunité de montée en gamme sur {topic}",
+          "content": "Environ {value}% des comptes atteignent leur limite {topic} au moins une fois par mois, sans jamais avoir vu de proposition d'évolution."
+        },
+        "de": {
+          "title": "Upselling-Chance bei {topic}",
+          "content": "Rund {value}% der Konten erreichen ihr {topic}-Limit mindestens einmal im Monat, haben aber nie einen Upgrade-Hinweis gesehen."
+        }
+      }
+    },
+    {
+      "key": "traffic-anomaly",
+      "category": "anomaly",
+      "tags": ["spike", "traffic", "investigate"],
+      "source": "anomaly-detector",
+      "valueRange": [120, 900],
+      "windowValues": [5, 15, 45, 90],
+      "translations": {
+        "en": {
+          "title": "Traffic anomaly linked to {topic}",
+          "content": "A {value}% spike in {topic} requests came from a single region over {window} minutes and does not match any known campaign."
+        },
+        "es": {
+          "title": "Anomalía de tráfico vinculada a {topic}",
+          "content": "Un pico del {value}% en solicitudes de {topic} provino de una sola región durante {window} minutos y no coincide con ninguna campaña conocida."
+        },
+        "fr": {
+          "title": "Anomalie de trafic liée à {topic}",
+          "content": "Un pic de {value}% des requêtes {topic} provenait d'une seule région pendant {window} minutes et ne correspond à aucune campagne connue."
+        },
+        "de": {
+          "title": "Verkehrsanomalie im Zusammenhang mit {topic}",
+          "content": "Ein Anstieg von {value}% bei {topic}-Anfragen kam über {window} Minuten aus einer einzigen Region und passt zu keiner bekannten Kampagne."
+        }
+      }
+    }
+  ]
+}
